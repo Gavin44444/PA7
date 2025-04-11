@@ -1,0 +1,36 @@
+public void add(E e){
+          ensureCapacity();
+          //shift all elements before current
+          for(int i = size; i>current; i--){
+            elements[i] = elements[i-1];
+          }
+          elements[current] = e;
+          current++;
+          size++;
+        }
+        public void remove(){
+          //shift elements to the left to replace current index value with i+1
+          for(int i = current; i < size - 1; i++){
+            elements[i] = elements[i+1];
+          }
+          elements[size-1] = null;
+          size--;
+        }
+        public int nextIndex(){
+          if(current < size){
+            return current;
+          } else{
+            return -1;
+          }
+        }
+        public int previousIndex(){
+            if(current > 0){
+              return current - 1;
+            } else{
+              return -1;
+            }
+        }
+        public void set(E e){
+          if(current > 0)
+            elements[current-1] = e;
+        }
